@@ -1,0 +1,7 @@
+<div *ngFor="let p of post">
+  <h2>{{p.title}}</h2>
+  <p>{{p.des}}</p>
+  <strong>{{p.category}}</strong>
+  <button (click)="onRemovePost(p._id)">remove</button>
+  <button [routerLink]="['/editpost/',p._id]">edit</button>
+</div>
