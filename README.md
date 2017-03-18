@@ -1,2 +1,1 @@
-# meanpost
 # meanCRUD
