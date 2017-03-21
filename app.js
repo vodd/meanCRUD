@@ -5,10 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 const cors = require('cors');
-
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/pblog');
 
+
+const passport = require('passport');
+const config = require('./config/database')
+
+mongoose.connect(config.database);
+require('./config/passport');
 
 
 var index = require('./routes/index');
@@ -35,6 +39,13 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/posts', posts);
 
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+require("./config/passport")(passport);
+
+app.use('/users', users);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

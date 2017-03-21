@@ -36,6 +36,7 @@ testem.log
 /e2e/*.map
 
 /node_modules
+angular/node_modules
 
 
 #System Files
